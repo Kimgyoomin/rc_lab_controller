@@ -1,0 +1,3 @@
+<launch>
+  <node name="z1_ctrl_k" pkg="z1_controller" type="sim_ctrl" output="screen"/>
+</launch>
