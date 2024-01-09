@@ -16,6 +16,7 @@
 #include "FSM/State_Trajectory.h"
 #include "FSM/State_LowCmd.h"
 #include "IOROS.h"
+#include <ros/ros.h>
 
 bool running = true;
 

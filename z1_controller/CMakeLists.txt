@@ -53,6 +53,7 @@ link_directories(lib
 
 add_executable(sim_ctrl src/sim_ctrl.cpp src/IOROS.cpp)
 target_link_libraries(sim_ctrl ${catkin_LIBRARIES} libZ1_${CMAKE_HOST_SYSTEM_PROCESSOR}.so)
+# target_link_libraries(sim_ctrl ${catkin_LIBRARIES} libUnitreeArm_${CMAKE_HOST_SYSTEM_PROCESSOR}.so)
 # ---------------------------add executable-----------
 # set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 # add_executable(sim_ctrl src/sim_ctrl.cpp)
@@ -64,10 +65,25 @@ target_link_libraries(sim_ctrl ${catkin_LIBRARIES} libZ1_${CMAKE_HOST_SYSTEM_PRO
 # )
 
 
+# install 경로 지정
+# 24.01.08 install 경로 지정 -> directory
+# https://enssionaut.com/board_robotics/1264
+install(TARGETS sim_ctrl
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+install(DIRECTORY launch/
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch
+)
+
+################ directory 확
+install(DIRECTORY include
+  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+  PATTERN ".svn" EXCLUDE
+)
+
 
 # include_directories(
 #   ${catkin_INCLUDE_DIRS}
 #   include
 # )
-
-
